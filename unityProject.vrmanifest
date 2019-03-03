@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.conductvr.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Gamedev\\ConductVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\whitejaa\\Documents\\VR Things\\ConductVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "ConductVR [Testing]"
