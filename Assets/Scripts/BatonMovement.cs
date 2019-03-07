@@ -7,7 +7,7 @@ public class BatonMovement : MonoBehaviour
 {
     Rigidbody body;
     public SteamVR_Behaviour_Pose trackedObj;
-    public SteamVR_Action_Boolean conduct;
+    public ControllerHighlight controller;
     public Transform camera;
     public Light displayLight;
 
@@ -29,7 +29,7 @@ public class BatonMovement : MonoBehaviour
         float velZ = -trackedObj.GetVelocity().z * modZ;
         
         float linearVelocity = velX + velZ;
-        if(conduct.state) {
+        if(controller.IsHolding()) {
             if(linearVelocity > 1) {
                 Conductor.instance.AdvanceBeat(0);
                 displayLight.color = Color.blue;

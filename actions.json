@@ -2,7 +2,7 @@
   "actions": [
     {
       "name": "/actions/conductor/in/Conduct",
-      "type": "boolean"
+      "type": "vector1"
     },
     {
       "name": "/actions/conductor/in/PoseLeft",

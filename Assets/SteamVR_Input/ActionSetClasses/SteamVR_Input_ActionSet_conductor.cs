@@ -17,7 +17,7 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_conductor : Valve.VR.SteamVR_ActionSet
     {
         
-        public virtual SteamVR_Action_Boolean Conduct
+        public virtual SteamVR_Action_Single Conduct
         {
             get
             {

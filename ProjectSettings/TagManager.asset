@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hand_Left
+  - Hand_Right
   layers:
   - Default
   - TransparentFX

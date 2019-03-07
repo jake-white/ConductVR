@@ -28,7 +28,6 @@ public class Song : MonoBehaviour
     public void Play() {
         foreach(AudioSource part in instruments) {
             part.Play();
-            Debug.Log("playing" + part.name);
         }
     }
 }
