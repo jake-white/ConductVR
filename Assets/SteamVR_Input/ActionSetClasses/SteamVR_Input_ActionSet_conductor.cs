@@ -17,11 +17,11 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_conductor : Valve.VR.SteamVR_ActionSet
     {
         
-        public virtual SteamVR_Action_Single Conduct
+        public virtual SteamVR_Action_Single ConductRight
         {
             get
             {
-                return SteamVR_Actions.conductor_Conduct;
+                return SteamVR_Actions.conductor_ConductRight;
             }
         }
         
@@ -38,6 +38,14 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.conductor_PoseRight;
+            }
+        }
+        
+        public virtual SteamVR_Action_Single ConductLeft
+        {
+            get
+            {
+                return SteamVR_Actions.conductor_ConductLeft;
             }
         }
     }

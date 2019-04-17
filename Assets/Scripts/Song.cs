@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Song : MonoBehaviour
 {
-    public string name;
+    public string songName;
     public int bpm;
     public int topTimeSignature = 2;
     public AudioSource[] instruments;

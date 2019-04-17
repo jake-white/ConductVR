@@ -1,7 +1,7 @@
 {
   "actions": [
     {
-      "name": "/actions/conductor/in/Conduct",
+      "name": "/actions/conductor/in/ConductRight",
       "type": "vector1"
     },
     {
@@ -11,6 +11,10 @@
     {
       "name": "/actions/conductor/in/PoseRight",
       "type": "pose"
+    },
+    {
+      "name": "/actions/conductor/in/ConductLeft",
+      "type": "vector1"
     }
   ],
   "action_sets": [

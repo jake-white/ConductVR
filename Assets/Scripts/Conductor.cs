@@ -46,7 +46,7 @@ public class Conductor : MonoBehaviour
         currentDifference = Time.time - lastBeatTime; // the current unresolved waiting
     }
 
-    public void AdvanceBeat(int index) {
+    public bool AdvanceBeat(int index) { //returns if it is the correct beat needed next
         if(!started && index == 0) {
             currentbpm = song.bpm;
             Debug.Log("Starting song!");
@@ -54,6 +54,7 @@ public class Conductor : MonoBehaviour
             BeginSong();
             currentIndex = index;
             lastBeatTime = Time.time;
+            return true;
         }
         if(index == currentIndex + 1 || (index == 0 && currentIndex == song.topTimeSignature - 1)) {
             float timeStamp = Time.time;
@@ -62,7 +63,9 @@ public class Conductor : MonoBehaviour
             lastBeatTime = Time.time;
             currentIndex = index;
             beats.Add(newBeat);
+            return true;
         }
+        return false;
     }
 
     int CalculateBPM() {
@@ -116,5 +119,9 @@ public class Conductor : MonoBehaviour
             instrument.pitch = speed;
         }
         mixer.SetFloat("PitchShift", 1/speed);
+    }
+
+    public int GetTopTimeSignature() {
+        return song.topTimeSignature;
     }
 }

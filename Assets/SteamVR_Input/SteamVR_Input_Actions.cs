@@ -17,17 +17,19 @@ namespace Valve.VR
     public partial class SteamVR_Actions
     {
         
-        private static SteamVR_Action_Single p_conductor_Conduct;
+        private static SteamVR_Action_Single p_conductor_ConductRight;
         
         private static SteamVR_Action_Pose p_conductor_PoseLeft;
         
         private static SteamVR_Action_Pose p_conductor_PoseRight;
         
-        public static SteamVR_Action_Single conductor_Conduct
+        private static SteamVR_Action_Single p_conductor_ConductLeft;
+        
+        public static SteamVR_Action_Single conductor_ConductRight
         {
             get
             {
-                return SteamVR_Actions.p_conductor_Conduct.GetCopy<SteamVR_Action_Single>();
+                return SteamVR_Actions.p_conductor_ConductRight.GetCopy<SteamVR_Action_Single>();
             }
         }
         
@@ -47,16 +49,26 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Single conductor_ConductLeft
+        {
+            get
+            {
+                return SteamVR_Actions.p_conductor_ConductLeft.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
         private static void InitializeActionArrays()
         {
             Valve.VR.SteamVR_Input.actions = new Valve.VR.SteamVR_Action[] {
-                    SteamVR_Actions.conductor_Conduct,
+                    SteamVR_Actions.conductor_ConductRight,
                     SteamVR_Actions.conductor_PoseLeft,
-                    SteamVR_Actions.conductor_PoseRight};
+                    SteamVR_Actions.conductor_PoseRight,
+                    SteamVR_Actions.conductor_ConductLeft};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
-                    SteamVR_Actions.conductor_Conduct,
+                    SteamVR_Actions.conductor_ConductRight,
                     SteamVR_Actions.conductor_PoseLeft,
-                    SteamVR_Actions.conductor_PoseRight};
+                    SteamVR_Actions.conductor_PoseRight,
+                    SteamVR_Actions.conductor_ConductLeft};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[0];
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[0];
             Valve.VR.SteamVR_Input.actionsPose = new Valve.VR.SteamVR_Action_Pose[] {
@@ -64,19 +76,22 @@ namespace Valve.VR
                     SteamVR_Actions.conductor_PoseRight};
             Valve.VR.SteamVR_Input.actionsBoolean = new Valve.VR.SteamVR_Action_Boolean[0];
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
-                    SteamVR_Actions.conductor_Conduct};
+                    SteamVR_Actions.conductor_ConductRight,
+                    SteamVR_Actions.conductor_ConductLeft};
             Valve.VR.SteamVR_Input.actionsVector2 = new Valve.VR.SteamVR_Action_Vector2[0];
             Valve.VR.SteamVR_Input.actionsVector3 = new Valve.VR.SteamVR_Action_Vector3[0];
             Valve.VR.SteamVR_Input.actionsSkeleton = new Valve.VR.SteamVR_Action_Skeleton[0];
             Valve.VR.SteamVR_Input.actionsNonPoseNonSkeletonIn = new Valve.VR.ISteamVR_Action_In[] {
-                    SteamVR_Actions.conductor_Conduct};
+                    SteamVR_Actions.conductor_ConductRight,
+                    SteamVR_Actions.conductor_ConductLeft};
         }
         
         private static void PreInitActions()
         {
-            SteamVR_Actions.p_conductor_Conduct = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/conductor/in/Conduct")));
+            SteamVR_Actions.p_conductor_ConductRight = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/conductor/in/ConductRight")));
             SteamVR_Actions.p_conductor_PoseLeft = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/conductor/in/PoseLeft")));
             SteamVR_Actions.p_conductor_PoseRight = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/conductor/in/PoseRight")));
+            SteamVR_Actions.p_conductor_ConductLeft = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/conductor/in/ConductLeft")));
         }
     }
 }

@@ -21,6 +21,7 @@ public class Instrument : MonoBehaviour
     public void GazeEnter() {
         if(!inGaze) {
             GetComponent<MeshRenderer>().material = selected;
+            GetComponent<AudioSource>().volume = 1;
         }
         inGaze = true;
     }
@@ -28,6 +29,7 @@ public class Instrument : MonoBehaviour
     public void GazeExit() {
         if(inGaze) {
             GetComponent<MeshRenderer>().material = unselected;
+            GetComponent<AudioSource>().volume = 0.5f;
         }
         inGaze = false;
     }

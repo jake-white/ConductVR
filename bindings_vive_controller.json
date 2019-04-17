@@ -27,11 +27,20 @@
             {
                "inputs" : {
                   "pull" : {
-                     "output" : "/actions/conductor/in/conduct"
+                     "output" : "/actions/conductor/in/conductright"
                   }
                },
                "mode" : "trigger",
                "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "pull" : {
+                     "output" : "/actions/conductor/in/conductleft"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/left/input/trigger"
             }
          ]
       },

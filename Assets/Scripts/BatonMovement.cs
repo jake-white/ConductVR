@@ -10,6 +10,7 @@ public class BatonMovement : MonoBehaviour
     public ControllerHighlight controller;
     public Transform camera;
     public Light displayLight;
+    Color[] beatColors = {Color.blue, Color.green, Color.red, Color.yellow};
 
     // Update is called once per frame
     void Update()
@@ -26,17 +27,47 @@ public class BatonMovement : MonoBehaviour
 
 
         float velX = trackedObj.GetVelocity().x * modX;
+        float velY = trackedObj.GetVelocity().y;
         float velZ = -trackedObj.GetVelocity().z * modZ;
         
-        float linearVelocity = velX + velZ;
+        float horizontalVelocity = velX + velZ;
+        float verticalVelocity = velY;
         if(controller.IsHolding()) {
-            if(linearVelocity > 1) {
-                Conductor.instance.AdvanceBeat(0);
-                displayLight.color = Color.blue;
+            //checks every time signature
+            int detectedMotions = 0, detectedBeat = 0;
+            if(Conductor.instance.GetTopTimeSignature() == 2) {
+                if(horizontalVelocity > 1) {
+                    detectedMotions++;
+                    detectedBeat = 0;
+                }
+                else if(horizontalVelocity < -1) {
+                    detectedMotions++;
+                    detectedBeat = 1;
+                }
             }
-            else if(linearVelocity < -1) {
-                Conductor.instance.AdvanceBeat(1);
-                displayLight.color = Color.green;
+            else if(Conductor.instance.GetTopTimeSignature() == 4) {
+                if(verticalVelocity < -1) {
+                    detectedMotions++;
+                    detectedBeat = 0;
+                }
+                else if(horizontalVelocity < -1) {
+                    detectedMotions++;
+                    detectedBeat = 1;
+                }
+                else if(horizontalVelocity > 1) {
+                    detectedMotions++;
+                    detectedBeat = 2;
+                }
+                else if(verticalVelocity > 1) {
+                    detectedMotions++;
+                    detectedBeat = 3;
+                }
+            }
+
+            if(detectedMotions == 1) { //exactly 1 motion detected
+                if(Conductor.instance.AdvanceBeat(detectedBeat)) {
+                    displayLight.color = beatColors[detectedBeat];
+                }
             }
         }
     }
