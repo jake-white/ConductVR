@@ -26,35 +26,47 @@ public class ControllerHighlight : MonoBehaviour
         bool holdingTriggerRight = triggerAxisRight > 0.1;
         if(!inHand) {
             if(range.InRange_Left()) {
-                baton.materials[1] = highlight;
+                Material[] mats = baton.materials;
                 if(holdingTriggerLeft) {
                     inHand = true;
                     transform.parent.parent = leftWrist;
                     transform.parent.localPosition = Vector3.zero;
                     transform.parent.localRotation = Quaternion.Euler(Vector3.zero);
-                    baton.materials[1] = null;
+                    mats[1] = null;
+                    baton.materials = mats;
                     transform.parent.GetComponent<Rigidbody>().isKinematic = true;
+                }
+                else {                    
+                    mats[1] = highlight;
+                    baton.materials = mats;
                 }
             }
             else if(range.InRange_Right()) {
-                baton.materials[1] = highlight;
+                Material[] mats = baton.materials;
                 if(holdingTriggerRight) {
                     inHand = true;
                     transform.parent.parent = rightWrist;
                     transform.parent.localPosition = Vector3.zero;
                     transform.parent.localRotation = Quaternion.Euler(Vector3.zero);
-                    baton.materials[1] = null;
+                    mats[1] = null;
+                    baton.materials = mats;
                     transform.parent.GetComponent<Rigidbody>().isKinematic = true;
                 }
+                else {
+                    mats[1] = highlight;
+                    baton.materials = mats;
+                }
             }
-            else {                
-                baton.materials[1] = null;
+            else {
+                Material[] mats = baton.materials;
+                mats[1] = null;
+                baton.materials = mats;
             }
         }
         else if(inHand && !(holdingTriggerLeft || holdingTriggerRight)) {
             inHand = false;
             transform.parent.parent = null;
-                    transform.parent.GetComponent<Rigidbody>().isKinematic = false;
+            transform.parent.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 

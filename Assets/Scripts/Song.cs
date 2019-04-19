@@ -27,6 +27,7 @@ public class Song : MonoBehaviour
 
     public void Play() {
         foreach(AudioSource part in instruments) {
+            part.GetComponent<Animator>().Play("Play");
             part.Play();
         }
     }

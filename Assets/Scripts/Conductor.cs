@@ -37,7 +37,7 @@ public class Conductor : MonoBehaviour
 
     void BeginSong() {
         song.Play();
-        InvokeRepeating(nameof(Metronome), 0, 60/(float) song.bpm);
+        //InvokeRepeating(nameof(Metronome), 0, 60/(float) song.bpm);
         InvokeRepeating(nameof(ChangePitch), 1, 0.1f);
     }
 
@@ -48,6 +48,7 @@ public class Conductor : MonoBehaviour
 
     public bool AdvanceBeat(int index) { //returns if it is the correct beat needed next
         if(!started && index == 0) {
+            Metronome();
             currentbpm = song.bpm;
             Debug.Log("Starting song!");
             started = true;
@@ -57,6 +58,7 @@ public class Conductor : MonoBehaviour
             return true;
         }
         if(index == currentIndex + 1 || (index == 0 && currentIndex == song.topTimeSignature - 1)) {
+            Metronome();
             float timeStamp = Time.time;
             float newDifference = timeStamp - lastBeatTime;
             Beat newBeat = new Beat(timeStamp, newDifference);
@@ -101,8 +103,10 @@ public class Conductor : MonoBehaviour
 
         queue+="= "+avg + "\n";
         debugText.text = queue;
-
-        int bpm = Mathf.RoundToInt(60*(1/avg));
+        int bpm = 0;
+        if(avg != 0) {
+            bpm = Mathf.RoundToInt(60*(1/avg));
+        }
         return bpm;
     }
 

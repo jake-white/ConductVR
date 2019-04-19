@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Instrument : MonoBehaviour
 {
-    public Material selected, unselected;
+    public GameObject selector;
     bool inGaze;
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<MeshRenderer>().material = unselected;        
+        selector.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class Instrument : MonoBehaviour
 
     public void GazeEnter() {
         if(!inGaze) {
-            GetComponent<MeshRenderer>().material = selected;
+            selector.SetActive(true);
             GetComponent<AudioSource>().volume = 1;
         }
         inGaze = true;
@@ -28,7 +28,7 @@ public class Instrument : MonoBehaviour
 
     public void GazeExit() {
         if(inGaze) {
-            GetComponent<MeshRenderer>().material = unselected;
+            selector.SetActive(false);
             GetComponent<AudioSource>().volume = 0.5f;
         }
         inGaze = false;
