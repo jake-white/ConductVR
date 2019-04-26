@@ -6,16 +6,10 @@ public class Instrument : MonoBehaviour
 {
     public GameObject selector;
     bool inGaze;
-    // Start is called before the first frame update
+    
     void Start()
     {
         selector.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void GazeEnter() {

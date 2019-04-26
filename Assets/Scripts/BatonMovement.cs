@@ -12,7 +12,6 @@ public class BatonMovement : MonoBehaviour
     public Light displayLight;
     Color[] beatColors = {Color.blue, Color.green, Color.red, Color.yellow};
 
-    // Update is called once per frame
     void Update()
     {
 

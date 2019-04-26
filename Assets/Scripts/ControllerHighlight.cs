@@ -11,13 +11,12 @@ public class ControllerHighlight : MonoBehaviour
     public HighlightRange range;
     public Transform leftHand, rightHand, leftWrist, rightWrist;
     MeshRenderer baton;
-    // Start is called before the first frame update
+    
     void Start()
     {
         baton = GetComponent<MeshRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float triggerAxisLeft = conductLeft.GetAxis(SteamVR_Input_Sources.Any);

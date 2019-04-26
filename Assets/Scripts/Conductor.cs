@@ -8,7 +8,6 @@ using TMPro;
 public class Conductor : MonoBehaviour
 {
     public static Conductor instance = null; //singleton instance
-    public Baton baton;
     public AudioMixer mixer;
     public Song song;
     public TextMeshProUGUI bpmText, debugText;
